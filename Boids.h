@@ -41,7 +41,7 @@ class Boids
     // =======================================================================
     //                                 Enums
     // =======================================================================
-    
+/*
     // =======================================================================
     //                               Constructors
     // =======================================================================
@@ -51,11 +51,12 @@ class Boids
     //                                Destructor
     // =======================================================================
     virtual ~Boids(void);
-
+*/
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-
+   inline unsigned int Get_radius (void) const;
+   inline unsigned int Get_contact (void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -86,11 +87,13 @@ class Boids
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     };*/
-    Boids(const Template_class &model)
+      /*
+    Boids(const Boids &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     };
+    */
 
 
     // =======================================================================
@@ -100,12 +103,28 @@ class Boids
     // =======================================================================
     //                             Protected Attributes
     // =======================================================================
+
+    static const unsigned int W = 20; // Wdith of the tab
+    static const unsigned int H = 30; // Hight of the tab
+    static const unsigned int TAB [W][H];
+    static unsigned int N; //number of agents
+    const unsigned int r = 5; // perception radius 
+    const unsigned int c = 5; //contanct distance
+
 };
 
 
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
+
+unsigned int Boids::Get_radius(void) const{
+    return r;
+}
+
+unsigned int Boids::Get_contact(void) const{
+    return c;
+}
 
 // ===========================================================================
 //                              Setters' definitions

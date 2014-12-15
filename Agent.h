@@ -21,7 +21,7 @@
 // ===========================================================================
 //                                Project Files
 // ===========================================================================
-
+#include "Boids.h"
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-class Agent
+class Agent : public Boids
 {
   public :
     
@@ -55,11 +55,13 @@ class Agent
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-
+    inline unsigned int Get_x(void) const;
+    inline unsigned int Get_y(void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
-
+    inline void Set_x(unsigned int new_x);
+    inline void Set_y(unsigned int new_y);
     // =======================================================================
     //                                Operators
     // =======================================================================
@@ -100,6 +102,14 @@ class Agent
     // =======================================================================
     //                             Protected Attributes
     // =======================================================================
+
+    unsigned int x;
+    unsigned int y;
+    const unsigned int k=10; // nb of Agents who actually are inside de radius
+    const unsigned int o=3; // nb d'objects that're in the contact distance
+    const unsigned int k2=6; // nb of Agents who're in the contact distance
+
+
 };
 
 
@@ -107,9 +117,24 @@ class Agent
 //                              Getters' definitions
 // ===========================================================================
 
+unsigned int Agent::Get_x(void) const{
+    return x;
+}
+
+unsigned int Agent::Get_y(void) const{
+    return y;
+}
+
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
+void Agent::Set_x(unsigned int new_x){
+    x=new_x;
+}
+
+void Agent::Set_y(unsigned int new_y){
+    y=new_y;
+}
 
 // ===========================================================================
 //                             Operators' definitions
