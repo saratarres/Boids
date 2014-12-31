@@ -104,9 +104,9 @@ class Boids
     //                             Protected Attributes
     // =======================================================================
 
-    static const unsigned int W = 20; // Wdith of the tab
-    static const unsigned int H = 30; // Hight of the tab
-    static const unsigned int TAB [W][H];
+    static const unsigned int W; // Wdith of the tab
+    static const unsigned int H; // Hight of the tab
+    static unsigned int TAB[20][30];
     static unsigned int N; //number of agents
     const unsigned int r = 5; // perception radius 
     const unsigned int c = 5; //contanct distance
