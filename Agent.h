@@ -15,6 +15,7 @@
 // ===========================================================================
 #include <cstdio>
 #include <cstdlib>
+#include <string.h>
 
 
 
@@ -55,13 +56,16 @@ class Agent : public Boids
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    inline unsigned int Get_x(void) const;
-    inline unsigned int Get_y(void) const;
+    inline float Get_x(void) const;
+    inline float Get_y(void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
-    inline void Set_x(unsigned int new_x);
-    inline void Set_y(unsigned int new_y);
+    inline void Set_x(float new_x);
+    inline void Set_y(float new_y);
+    inline void Set_k(unsigned int new_k);
+    inline void Set_o(unsigned int new_o);
+    inline void Set_k2(unsigned int new_k2);
     // =======================================================================
     //                                Operators
     // =======================================================================
@@ -69,7 +73,13 @@ class Agent : public Boids
     // =======================================================================
     //                              Public Methods
     // =======================================================================
-
+    //
+        void position (void);
+        float global_speed (float time);
+        float speed_one (float time);
+        float speed_two(float time);
+        float speed_three(float time);
+    //
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
@@ -103,11 +113,15 @@ class Agent : public Boids
     //                             Protected Attributes
     // =======================================================================
 
-    unsigned int x;
-    unsigned int y;
-    const unsigned int k=10; // nb of Agents who actually are inside de radius
-    const unsigned int o=3; // nb d'objects that're in the contact distance
-    const unsigned int k2=6; // nb of Agents who're in the contact distance
+
+    float x;
+    float y;
+    float initial_speed;
+    float step;
+    unsigned int k; // nb of Agents who actually are inside de radius
+    unsigned int o; // nb d'objects that're in the contact distance
+    unsigned int k2; // nb of Agents who're in the contact distance
+
 
 
 };
@@ -117,25 +131,36 @@ class Agent : public Boids
 //                              Getters' definitions
 // ===========================================================================
 
-unsigned int Agent::Get_x(void) const{
+float Agent::Get_x(void) const{
     return x;
 }
 
-unsigned int Agent::Get_y(void) const{
+float Agent::Get_y(void) const{
     return y;
 }
 
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
-void Agent::Set_x(unsigned int new_x){
+void Agent::Set_x(float new_x){
     x=new_x;
 }
 
-void Agent::Set_y(unsigned int new_y){
+void Agent::Set_y(float new_y){
     y=new_y;
 }
 
+void Agent::Set_k(unsigned int new_k){
+    k=new_k;
+}
+
+void Agent::Set_o(unsigned int new_o){
+    o=new_o;
+}
+
+void Agent::Set_k2(unsigned int new_k2){
+    k2=new_k2;
+}
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
@@ -144,6 +169,6 @@ void Agent::Set_y(unsigned int new_y){
 //                          Inline functions' definition
 // ===========================================================================
 
-
+;
 #endif // __AGENT_H__
 

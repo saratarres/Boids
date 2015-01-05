@@ -41,12 +41,12 @@ class Boids
     // =======================================================================
     //                                 Enums
     // =======================================================================
-/*
+
     // =======================================================================
     //                               Constructors
     // =======================================================================
     Boids(void);
-
+/*
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -82,7 +82,7 @@ class Boids
     // =======================================================================
     //                            Forbidden Constructors
     // =======================================================================
-    /*Template_class(void)
+    /*Boids(void)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
@@ -106,10 +106,12 @@ class Boids
 
     static const unsigned int W; // Wdith of the tab
     static const unsigned int H; // Hight of the tab
-    static unsigned int TAB[20][30];
+
     static unsigned int N; //number of agents
-    const unsigned int r = 5; // perception radius 
-    const unsigned int c = 5; //contanct distance
+    unsigned int r; // perception radius 
+    unsigned int c; //contact distance
+
+    float store[100]; //stores the positions of the different agents
 
 };
 
