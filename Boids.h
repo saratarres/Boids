@@ -81,7 +81,7 @@ class Boids
     
    
     int perception_rad (int agent_ref); //calculates nb of agents in the radius
-    int perception_contact(int agent_ref); //calculates nb of agents in the contact radius
+    int perception_contact(); //calculates nb of agents in the contact radius
 
     float* global_speed (float t);
     float* speed_one (float t);

@@ -18,6 +18,7 @@
 // ===========================================================================
 #include "Boids.h"
 #include "Agent.h"
+#include <math.h>
 
 
 
@@ -63,10 +64,41 @@ Boids::~Boids(void)
 // ===========================================================================
 
 int Boids::perception_rad(int agent_ref){
+	
+	Agent * tabk = new Agent[N];
+
+	for (int i=0; i<N; i++){
+	  float distance = sqrt(pow((tabAgent[agent_ref].Get_x())-(tabAgent[i].Get_x()),2)-pow((tabAgent[agent_ref].Get_y())-(tabAgent[i].Get_y()),2));
+	  if(distance<r && distance!=0){
+	  	k++;
+	  	tabk[i]=tabAgent[i];
+	  }
+	  if (distance>r || distance == 0 ){
+	  	tabk[i]=0;
+	  }
+	}
+	
 	return k;
 }
 
-int Boids::perception_contact(int agent_ref){
+int Boids::perception_contact(){
+
+	Agent * tabkprime = new Agent[N];
+
+	for(int i=0; i<N; i++){
+	  if(tabk[i]!=0){
+		for (int j = 0; j<N; j++){
+	  	  float distance = sqrt(pow(tabAgent[j].Get_x()-tabk[i].Get_x(),2)-pow(tabAgent[j].Get_y()-tabk[i].Get_y(),2));
+	   	  if (distance<c && distance!=0){
+		    kprime++;
+			tabkprime[i]=tabk[i];
+		  }if (distance>r || distance == 0){
+			tabkprime[i]=0;
+	   	  }
+		}
+	  }
+	}
+
 	return kprime;
 }
 
