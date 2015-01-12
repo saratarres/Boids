@@ -41,16 +41,7 @@ int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
 
-  Boids Boids1= Boids();
 
-  int r = Boids1.Get_radius();
-  printf("%d\n", r);
-
-  Agent Agent1= Agent();
-
-  Agent1.Set_numagent(1);
-  Agent1.Set_x(22.0);
-  printf("%f\n", Agent1.Get_x());
 
 
   return 0;

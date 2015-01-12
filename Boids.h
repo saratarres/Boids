@@ -15,6 +15,7 @@
 // ===========================================================================
 #include <cstdio>
 #include <cstdlib>
+#include "Agent.h"
 
 
 
@@ -112,6 +113,7 @@ class Boids
     unsigned int c; //contact distance
 
     float store[100]; //stores the positions of the different agents
+    Agent* tabAgent = new Agent[50]; //table d'Agents
 
 };
 
